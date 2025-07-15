@@ -8,8 +8,7 @@ const {data: posts, pending: postsPending} = await useFetch('https://portaldj.pr
     per_page: 5,
     orderby: 'date',
     order: 'desc',
-  },
-  lazy: true
+  }
 });
 
 const route = useRoute();
