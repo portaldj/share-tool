@@ -3,7 +3,7 @@
 con este se debe comenzar el desarrollo y conexiones a las APIs*/
 import LogoIcon from "~/components/icons/LogoIcon.vue";
 
-const {data: posts, pending: postsPending} = await useFetch('https://portaldj.pro/wp-json/wp/v2/posts', {
+const {data: posts, pending: postsPending} = await useFetch('https://pdj.cl/wp-json/wp/v2/posts', {
   query: {
     per_page: 5,
     orderby: 'date',
