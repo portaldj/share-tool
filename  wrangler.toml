@@ -1,9 +1,0 @@
-name = "pdj-share-tool"
-type = "javascript"
-account_id = "89dda55e7f2040c9f8143380fe742765"
-compatibility_date = "2025-05-15"
-
-main = ".output/server/index.mjs"
-
-[build]
-command = "NITRO_PRESET=cloudflare npx nuxi build"
