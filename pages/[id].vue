@@ -68,7 +68,7 @@ useSeoMeta({
       </a>
 
 
-      <a href="https://www.youtube.com/c/PortalDJ" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 w-full">
+      <a href="https://www.youtube.com/c/PortalDJ?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 w-full">
         YouTube
       </a>
 
