@@ -1,0 +1,31 @@
+{
+    "landing": {
+        "title": "Hub.dj by Portal DJ - A DJ link in bio built for you",
+        "description": "Join the DJ network to create your bio link. A single link helps you share everything you create, showcase your talent, and get bookings from Instagram, TikTok, Twitter, YouTube, and other social media platforms.",
+        "brand": "by Portal DJ",
+        "login": "Log in",
+        "signup": "Sign up free",
+        "eyebrow": "For DJs, Producers & Artists",
+        "headline_1": "A DJ link in bio",
+        "headline_2": "built for you.",
+        "cta_claim": "Claim your link",
+        "cta_login": "Login to Dashboard",
+        "feature_1_title": "Create in Minutes",
+        "feature_1_desc": "Create and customize your Hub.dj in minutes. No coding required, just drag, drop and launch.",
+        "feature_2_title": "Connect Everything",
+        "feature_2_desc": "Connect all your social media links, streams, and mixes with a single beautiful link in your bio.",
+        "feature_3_title": "Reflect Your Brand",
+        "feature_3_desc": "Customize every detail from your Portal DJ Profile to match your brand vibe and generate more clicks.",
+        "footer_rights": "Portal DJ. All rights reserved."
+    },
+    "profile": {
+        "not_found": "Not found",
+        "seo_og_title": "Portal DJ, the largest DJ community in Spanish",
+        "seo_desc": "Easily share your social networks, music, and links with your community using Portal DJ's link tool.",
+        "seo_og_desc": "News and analysis from the DJ world",
+        "seo_tw_desc": "Portal DJ is the largest DJ community in Spanish",
+        "support_kofi": "Support us on Ko-fi",
+        "subtitle_1": "News and analysis from the DJ world",
+        "subtitle_2": "Professional content for DJs"
+    }
+}

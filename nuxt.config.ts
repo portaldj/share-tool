@@ -8,6 +8,16 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+  modules: ['@nuxtjs/i18n'],
+  i18n: {
+    locales: [
+      { code: 'en', file: 'en.json', name: 'English' },
+      { code: 'es', file: 'es.json', name: 'Español' }
+    ],
+    defaultLocale: 'es',
+    langDir: 'locales/',
+    strategy: 'no_prefix'
+  },
   app: {
     head: {
       title: 'Portal DJ',

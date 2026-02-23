@@ -3,6 +3,8 @@
 con este se debe comenzar el desarrollo y conexiones a las APIs*/
 import LogoIcon from "~/components/icons/LogoIcon.vue";
 
+const { t } = useI18n()
+
 const { data: posts, pending: postsPending } = await useFetch('/api/posts', {
   lazy: true
 });
@@ -11,18 +13,18 @@ const route = useRoute();
 const id = route.params.id
 
 if (id !== 'portaldj') {
-  throw createError({ statusCode: 404, statusMessage: 'No encontrado' })
+  throw createError({ statusCode: 404, statusMessage: t('profile.not_found') })
 }
 
 useSeoMeta({
   title: 'Portal DJ',
-  ogTitle: 'Portal DJ, la comunidad DJ más grande en habla hispana',
-  description: 'Comparte fácilmente tus redes sociales, música y enlaces con tu comunidad usando la herramienta de enlaces de Portal DJ.',
-  ogDescription: 'Noticias y análisis del mundo DJ',
+  ogTitle: () => t('profile.seo_og_title'),
+  description: () => t('profile.seo_desc'),
+  ogDescription: () => t('profile.seo_og_desc'),
   ogImage: 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Portal DJ - Comunidad DJ',
-  twitterDescription: 'Portal DJ es la comunidad DJ más grande en habla hispana',
+  twitterDescription: () => t('profile.seo_tw_desc'),
   twitterImage: 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   ogUrl: 'https://hub.dj/portaldj',
   ogType: 'website'
@@ -42,8 +44,8 @@ useSeoMeta({
       >
 
       <h1 class="text-xl font-bold text-white">@portaldj.pro</h1>
-      <p class="text-sm text-gray-300 mt-1">Noticias y análisis del mundo DJ</p>
-      <p class="text-sm text-gray-300 mt-1">Contenido profesional para DJs</p>
+      <p class="text-sm text-gray-300 mt-1">{{ $t('profile.subtitle_1') }}</p>
+      <p class="text-sm text-gray-300 mt-1">{{ $t('profile.subtitle_2') }}</p>
     </div>
 
     <div  v-if="!postsPending" class="mt-8 flex flex-col space-y-4">
@@ -64,7 +66,7 @@ useSeoMeta({
       </a>
 
       <a href="https://ko-fi.com/portaldj" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 w-full">
-        Apóyanos en Ko-fi
+        {{ $t('profile.support_kofi') }}
       </a>
 
 

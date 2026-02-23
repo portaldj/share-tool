@@ -1,7 +1,9 @@
 <script setup lang="ts">
+const { t, locale, setLocale } = useI18n()
+
 useSeoMeta({
-  title: 'Hub.dj by Portal DJ - A DJ link in bio built for you',
-  description: 'Join the DJ network to create your bio link. A single link helps you share everything you create, showcase your talent, and get bookings from Instagram, TikTok, Twitter, YouTube, and other social media platforms.'
+  title: () => t('landing.title'),
+  description: () => t('landing.description')
 })
 </script>
 
@@ -17,13 +19,18 @@ useSeoMeta({
     <header class="w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center z-50 absolute top-0 left-0 right-0">
       <div class="flex flex-col">
         <h1 class="text-3xl font-bold tracking-tighter bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">Hub.dj</h1>
-        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-1">by Portal DJ</span>
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-1">{{ $t('landing.brand') }}</span>
       </div>
       
       <div class="flex items-center gap-4">
-        <a href="https://my.portaldj.pro/login" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hidden sm:block">Log in</a>
+        <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-md hidden sm:flex mr-1">
+          <button @click="setLocale('en')" class="text-xs font-bold transition-colors cursor-pointer" :class="locale === 'en' ? 'text-white' : 'text-slate-400 hover:text-slate-200'">EN</button>
+          <span class="text-slate-600 text-[10px] leading-none">|</span>
+          <button @click="setLocale('es')" class="text-xs font-bold transition-colors cursor-pointer" :class="locale === 'es' ? 'text-white' : 'text-slate-400 hover:text-slate-200'">ES</button>
+        </div>
+        <a href="https://my.portaldj.pro/login" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hidden sm:block">{{ $t('landing.login') }}</a>
         <a href="https://my.portaldj.pro/register" class="group relative px-6 py-2.5 font-bold text-sm bg-white text-slate-950 rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 active:scale-95">
-          <span class="relative z-10">Sign up free</span>
+          <span class="relative z-10">{{ $t('landing.signup') }}</span>
           <div class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-slate-200/50"></div>
         </a>
       </div>
@@ -38,32 +45,32 @@ useSeoMeta({
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-fuchsia-500"></span>
         </span>
-        <span class="text-xs font-semibold text-indigo-200 uppercase tracking-widest">For DJs, Producers & Artists</span>
+        <span class="text-xs font-semibold text-indigo-200 uppercase tracking-widest">{{ $t('landing.eyebrow') }}</span>
       </div>
 
       <!-- Super Headline -->
       <h2 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-[1.1] mb-6 drop-shadow-2xl animate-fade-in-up animation-delay-100">
-        A DJ link in bio <br class="hidden sm:block" />
+        {{ $t('landing.headline_1') }} <br class="hidden sm:block" />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-500 to-indigo-500">
-          built for you.
+          {{ $t('landing.headline_2') }}
         </span>
       </h2>
 
       <!-- Subheadline -->
       <p class="mt-6 text-lg sm:text-xl text-slate-300/90 leading-relaxed max-w-3xl font-medium animate-fade-in-up animation-delay-200">
-        Join the DJ network to create your bio link. A single link helps you share everything you create, showcase your talent, and get bookings from Instagram, TikTok, Twitter, YouTube, and other social media platforms.
+        {{ $t('landing.description') }}
       </p>
 
       <!-- Primary CTA Area -->
       <div class="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center w-full animate-fade-in-up animation-delay-300">
         <a href="https://my.portaldj.pro/register" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-fuchsia-600 hover:from-fuchsia-500 to-indigo-600 hover:to-indigo-500 text-white rounded-full font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group flex items-center justify-center gap-2">
-          Claim your link
+          {{ $t('landing.cta_claim') }}
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
         <a href="https://my.portaldj.pro/login" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold text-lg text-white backdrop-blur-md transition-all duration-300 hover:border-white/20 flex items-center justify-center">
-          Login to Dashboard
+          {{ $t('landing.cta_login') }}
         </a>
       </div>
 
@@ -78,9 +85,9 @@ useSeoMeta({
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Create in Minutes</h3>
+            <h3 class="text-xl font-bold text-white mb-3">{{ $t('landing.feature_1_title') }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
-              Create and customize your Hub.dj in minutes. No coding required, just drag, drop and launch.
+              {{ $t('landing.feature_1_desc') }}
             </p>
           </div>
         </div>
@@ -94,9 +101,9 @@ useSeoMeta({
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Connect Everything</h3>
+            <h3 class="text-xl font-bold text-white mb-3">{{ $t('landing.feature_2_title') }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
-              Connect all your social media links, streams, and mixes with a single beautiful link in your bio.
+              {{ $t('landing.feature_2_desc') }}
             </p>
           </div>
         </div>
@@ -110,9 +117,9 @@ useSeoMeta({
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Reflect Your Brand</h3>
+            <h3 class="text-xl font-bold text-white mb-3">{{ $t('landing.feature_3_title') }}</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
-              Customize every detail from your Portal DJ Profile to match your brand vibe and generate more clicks.
+              {{ $t('landing.feature_3_desc') }}
             </p>
           </div>
         </div>
@@ -122,7 +129,7 @@ useSeoMeta({
     <!-- Footer -->
     <footer class="w-full text-center py-8 z-10 border-t border-white/5 mt-auto bg-slate-950/50 backdrop-blur-lg">
       <p class="text-slate-500 font-medium text-sm">
-        &copy; {{ new Date().getFullYear() }} Portal DJ. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} {{ $t('landing.footer_rights') }}
       </p>
     </footer>
 
