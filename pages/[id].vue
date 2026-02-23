@@ -24,7 +24,7 @@ useSeoMeta({
   twitterTitle: 'Portal DJ - Comunidad DJ',
   twitterDescription: 'Portal DJ es la comunidad DJ más grande en habla hispana',
   twitterImage: 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
-  ogUrl: 'https://link.pdj.cl/portaldj',
+  ogUrl: 'https://hub.dj/portaldj',
   ogType: 'website'
 });
 </script>

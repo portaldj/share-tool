@@ -21,8 +21,8 @@ useSeoMeta({
       </div>
       
       <div class="flex items-center gap-4">
-        <a href="https://my.portal.pro/login" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hidden sm:block">Log in</a>
-        <a href="https://my.portal.pro/register" class="group relative px-6 py-2.5 font-bold text-sm bg-white text-slate-950 rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 active:scale-95">
+        <a href="https://my.portaldj.pro/login" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 hidden sm:block">Log in</a>
+        <a href="https://my.portaldj.pro/register" class="group relative px-6 py-2.5 font-bold text-sm bg-white text-slate-950 rounded-full overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-105 active:scale-95">
           <span class="relative z-10">Sign up free</span>
           <div class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-slate-200/50"></div>
         </a>
@@ -56,13 +56,13 @@ useSeoMeta({
 
       <!-- Primary CTA Area -->
       <div class="mt-12 flex flex-col sm:flex-row gap-5 items-center justify-center w-full animate-fade-in-up animation-delay-300">
-        <a href="https://my.portal.pro/register" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-fuchsia-600 hover:from-fuchsia-500 to-indigo-600 hover:to-indigo-500 text-white rounded-full font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group flex items-center justify-center gap-2">
+        <a href="https://my.portaldj.pro/register" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-fuchsia-600 hover:from-fuchsia-500 to-indigo-600 hover:to-indigo-500 text-white rounded-full font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group flex items-center justify-center gap-2">
           Claim your link
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
-        <a href="https://my.portal.pro/login" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold text-lg text-white backdrop-blur-md transition-all duration-300 hover:border-white/20 flex items-center justify-center">
+        <a href="https://my.portaldj.pro/login" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold text-lg text-white backdrop-blur-md transition-all duration-300 hover:border-white/20 flex items-center justify-center">
           Login to Dashboard
         </a>
       </div>
