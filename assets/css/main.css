@@ -3,6 +3,11 @@
 
 @theme {
     --font-body: "Inter", sans-serif;
+    --color-pdj-blue: #0051e7;
+    --color-pdj-cyan: #1C9CAF;
+    --color-pdj-lemon: #CDBD56;
+    --color-pdj-mustard: #E9BE6A;
+    --color-pdj-orange: #F29130;
 }
 
 
