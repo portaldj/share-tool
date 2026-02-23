@@ -8,7 +8,19 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
-  modules: ['@nuxtjs/i18n'],
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxtjs/sitemap'
+  ],
+  site: {
+    url: 'https://hub.dj',
+    name: 'Portal DJ'
+  },
+  sitemap: {
+    sources: [
+      '/api/_sitemap-urls'
+    ]
+  },
   i18n: {
     locales: [
       { code: 'en', file: 'en.json', name: 'English' },
@@ -28,5 +40,8 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: 'https://portaldj.pro/wp-content/uploads/2023/04/cropped-Icono-1080p-32x32.png' },
       ]
     }
+  },
+  routeRules: {
+    '/profiles/**': { prerender: true }, // perfiles generados estáticamente
   }
 });
