@@ -14,7 +14,7 @@ useSeoMeta({
     <div class="absolute top-[40%] left-[60%] w-[30%] h-[30%] bg-fuchsia-500/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
 
     <!-- Navigation Bar / Login-Register -->
-    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center z-10 absolute top-0">
+    <header class="w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center z-50 absolute top-0 left-0 right-0">
       <div class="flex flex-col">
         <h1 class="text-3xl font-bold tracking-tighter bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">Hub.dj</h1>
         <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-1">by Portal DJ</span>
