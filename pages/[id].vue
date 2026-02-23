@@ -70,7 +70,7 @@ useSeoMeta({
 </script>
 
 <template>
-<div class="bg-gray-900 text-white">
+<div class="bg-gray-900 text-white min-h-screen flex flex-col">
   <main class="max-w-2xl mx-auto p-4 pt-8 md:pt-12">
     <div class="flex flex-col items-center text-center">
       <template v-if="isPortalDj">
