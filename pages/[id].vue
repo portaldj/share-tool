@@ -71,7 +71,7 @@ useSeoMeta({
 
 <template>
 <div class="bg-gray-900 text-white min-h-screen flex flex-col">
-  <main class="max-w-2xl mx-auto p-4 pt-8 md:pt-12">
+  <main class="w-full max-w-2xl mx-auto p-4 pt-8 md:pt-12 flex-grow">
     <div class="flex flex-col items-center text-center">
       <template v-if="isPortalDj">
         <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png" alt="Imagen de perfil de Portal DJ" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a202c/ffffff?text=DJ';">
