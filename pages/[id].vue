@@ -7,6 +7,11 @@ const { t } = useI18n()
 
 const route = useRoute();
 const id = route.params.id as string;
+
+if (id === 'admin' || id.toLowerCase() === 'admin') {
+  throw createError({ statusCode: 404, statusMessage: t('profile.not_found') })
+}
+
 const isPortalDj = id === 'portaldj';
 
 // 1. Fetch posts only for portaldj (Static logic)
