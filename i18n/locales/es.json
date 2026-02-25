@@ -27,6 +27,9 @@
         "support_kofi": "Apóyanos en Ko-fi",
         "subtitle_1": "Noticias y análisis del mundo DJ",
         "subtitle_2": "Contenido profesional para DJs",
-        "view_full_profile": "Ver perfil completo"
+        "view_full_profile": "Ver perfil completo",
+        "incomplete_title": "Perfil en construcción",
+        "incomplete_desc": "¿Eres el dueño de este perfil? Ingresa ahora a tu panel para subir tu foto y agregar tus redes sociales o eventos.",
+        "incomplete_cta": "Completar mi perfil"
     }
 }
