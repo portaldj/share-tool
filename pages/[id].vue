@@ -38,15 +38,22 @@ const isProfileComplete = computed(() => {
   
   const hasPhoto = !!profileDetails.value?.images?.original;
   const hasNetworks = (profileData.value.social_networks?.length || 0) > 0;
+  const hasHubLinks = (profileData.value.hub_links?.length || 0) > 0;
   const hasEvents = (profileData.value.events?.length || 0) > 0;
   
-  return hasPhoto && (hasNetworks || hasEvents);
+  return hasPhoto && (hasNetworks || hasHubLinks || hasEvents);
 });
 
 // Social networks sorted by order
 const socialNetworks = computed(() => {
   if (!profileData.value?.social_networks) return [];
   return [...profileData.value.social_networks].sort((a, b) => a.order - b.order);
+});
+
+// Hub links sorted by order
+const hubLinks = computed(() => {
+  if (!profileData.value?.hub_links) return [];
+  return [...profileData.value.hub_links].sort((a, b) => a.order - b.order);
 });
 
 // URL Formatter Helper
@@ -142,6 +149,12 @@ useSeoMeta({
       </div>
 
       <div v-else-if="profileData" class="mt-8 flex flex-col space-y-4">
+        <a v-for="link in hubLinks" :key="'hub-'+link.id" :href="link.url" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:border-pdj-cyan/50 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(28,156,175,0.2)] hover:scale-[1.02] active:scale-[0.98] w-full backdrop-blur-sm">
+          <div class="absolute inset-0 bg-gradient-to-r from-pdj-blue/10 to-pdj-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="relative z-10 tracking-wide text-center">{{ link.title }}</span>
+          <span v-if="link.description" class="relative z-10 text-xs font-normal text-slate-300 mt-1 text-center line-clamp-2">{{ link.description }}</span>
+        </a>
+
         <a v-for="link in socialNetworks" :key="link.id" :href="getSocialUrl(link.platform.name, link.url)" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group flex items-center justify-center bg-white/5 border border-white/10 hover:border-pdj-cyan/50 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(28,156,175,0.2)] hover:scale-[1.02] active:scale-[0.98] w-full backdrop-blur-sm">
           <div class="absolute inset-0 bg-gradient-to-r from-pdj-blue/10 to-pdj-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div class="absolute left-6 w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" v-html="link.platform.icon"></div>
