@@ -90,6 +90,12 @@ useSeoMeta({
   ogUrl: `https://hub.dj/${id}`,
   ogType: 'website'
 });
+
+useHead({
+  link: [
+    { rel: 'canonical', href: `https://hub.dj/${id}` }
+  ]
+})
 </script>
 
 <template>

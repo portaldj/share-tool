@@ -5,6 +5,12 @@ useSeoMeta({
   title: () => t('landing.title'),
   description: () => t('landing.description')
 })
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://hub.dj/' }
+  ]
+})
 </script>
 
 <template>
