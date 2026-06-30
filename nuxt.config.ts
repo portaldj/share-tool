@@ -37,7 +37,7 @@ export default defineNuxtConfig({
         lang: 'es',
       },
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: 'https://portaldj.pro/wp-content/uploads/2023/04/cropped-Icono-1080p-32x32.png' },
+        { rel: 'icon', type: 'image/x-icon', href: 'https://wp.portaldj.pro/wp-content/uploads/2023/04/cropped-Icono-1080p-32x32.png' },
       ]
     }
   },
