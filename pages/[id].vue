@@ -82,11 +82,11 @@ useSeoMeta({
   ogTitle: isPortalDj ? () => t('profile.seo_og_title') : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
   description: isPortalDj ? () => t('profile.seo_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
   ogDescription: isPortalDj ? () => t('profile.seo_og_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
-  ogImage: isPortalDj ? 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
+  ogImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   twitterCard: 'summary_large_image',
   twitterTitle: isPortalDj ? 'Portal DJ - Comunidad DJ' : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
   twitterDescription: isPortalDj ? () => t('profile.seo_tw_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
-  twitterImage: isPortalDj ? 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
+  twitterImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   ogUrl: `https://hub.dj/${id}`,
   ogType: 'website'
 });
