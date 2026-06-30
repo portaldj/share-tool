@@ -128,7 +128,7 @@ useHead({
 
       <div v-if="isPortalDj">
         <div v-if="!postsPending" class="mt-8 flex flex-col space-y-4">
-            <a v-for="post in posts" :key="post.guid.rendered" :href="post.guid.rendered" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 w-full">
+            <a v-for="post in posts" :key="post.slug" :href="`https://portaldj.pro/${post.slug}`" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 w-full">
               {{ post.title.rendered }}
             </a>
         </div>
