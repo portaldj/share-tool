@@ -106,7 +106,7 @@ useHead({
     <template v-if="isProfileComplete">
       <div class="flex flex-col items-center text-center">
         <template v-if="isPortalDj">
-          <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png" alt="Imagen de perfil de Portal DJ" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a202c/ffffff?text=DJ';">
+          <img class="w-24 h-24 rounded-full object-cover mb-4" src="https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png" alt="Imagen de perfil de Portal DJ" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a202c/ffffff?text=DJ';">
           <h1 class="text-xl font-bold text-white">@portaldj.pro</h1>
           <p class="text-sm text-gray-300 mt-1">{{ $t('profile.subtitle_1') }}</p>
           <p class="text-sm text-gray-300 mt-1">{{ $t('profile.subtitle_2') }}</p>
