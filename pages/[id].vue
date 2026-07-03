@@ -99,12 +99,12 @@ const getSoundCloudEmbedUrl = (url: string) => {
 useSeoMeta({
   title: isPortalDj ? 'Portal DJ' : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
   ogTitle: isPortalDj ? () => t('profile.seo_og_title') : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
-  description: isPortalDj ? () => t('profile.seo_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
-  ogDescription: isPortalDj ? () => t('profile.seo_og_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
+  description: isPortalDj ? () => t('profile.seo_desc') : () => (profileDetails.value?.show_bio_in_hub !== false ? (profileDetails.value?.hub_bio || profileDetails.value?.biography) : null) || t('profile.seo_desc'),
+  ogDescription: isPortalDj ? () => t('profile.seo_og_desc') : () => (profileDetails.value?.show_bio_in_hub !== false ? (profileDetails.value?.hub_bio || profileDetails.value?.biography) : null) || t('profile.seo_desc'),
   ogImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   twitterCard: 'summary_large_image',
   twitterTitle: isPortalDj ? 'Portal DJ - Comunidad DJ' : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
-  twitterDescription: isPortalDj ? () => t('profile.seo_tw_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
+  twitterDescription: isPortalDj ? () => t('profile.seo_tw_desc') : () => (profileDetails.value?.show_bio_in_hub !== false ? (profileDetails.value?.hub_bio || profileDetails.value?.biography) : null) || t('profile.seo_desc'),
   twitterImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   ogUrl: `https://hub.dj/${id}`,
   ogType: 'website'
@@ -135,7 +135,7 @@ useHead({
           <img class="w-24 h-24 rounded-full object-cover mb-4 shadow-lg shadow-white/5 border border-white/10" :src="profileDetails?.images?.original" :alt="profileData?.name" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a202c/ffffff?text=DJ';">
           <h1 class="text-2xl font-bold tracking-tight text-white">@{{ id }}</h1>
           <p class="text-sm text-gray-400 mt-1 font-medium">{{ profileData.name }}</p>
-          <p v-if="profileDetails?.hub_bio || profileDetails?.biography" class="text-sm text-gray-300 mt-3 max-w-sm text-center leading-relaxed">
+          <p v-if="profileDetails?.show_bio_in_hub !== false && (profileDetails?.hub_bio || profileDetails?.biography)" class="text-sm text-gray-300 mt-3 max-w-sm text-center leading-relaxed">
             {{ profileDetails?.hub_bio || profileDetails?.biography }}
           </p>
           <div v-if="profileDetails?.dj_type" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 mt-3">
