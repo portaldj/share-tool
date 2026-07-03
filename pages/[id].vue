@@ -47,7 +47,9 @@ const isProfileComplete = computed(() => {
 // Social networks sorted by order
 const socialNetworks = computed(() => {
   if (!profileData.value?.social_networks) return [];
-  return [...profileData.value.social_networks].sort((a, b) => a.order - b.order);
+  return [...profileData.value.social_networks]
+    .filter(n => n.show_in_hub !== false) // Only show if not explicitly hidden
+    .sort((a, b) => a.order - b.order);
 });
 
 // Hub links sorted by order
@@ -77,15 +79,32 @@ const getSocialUrl = (platformName: string, identifier: string) => {
   return `https://${identifier}`;
 }
 
+const getYouTubeEmbedUrl = (url: string) => {
+  let videoId = '';
+  if (url.includes('youtu.be/')) {
+    videoId = url.split('youtu.be/')[1]?.split('?')[0];
+  } else if (url.includes('youtube.com/watch')) {
+    const urlParams = new URL(url).searchParams;
+    videoId = urlParams.get('v') || '';
+  } else if (url.includes('youtube.com/embed/')) {
+    videoId = url.split('youtube.com/embed/')[1]?.split('?')[0];
+  }
+  return `https://www.youtube.com/embed/${videoId}`;
+}
+
+const getSoundCloudEmbedUrl = (url: string) => {
+  return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`;
+}
+
 useSeoMeta({
   title: isPortalDj ? 'Portal DJ' : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
   ogTitle: isPortalDj ? () => t('profile.seo_og_title') : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
-  description: isPortalDj ? () => t('profile.seo_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
-  ogDescription: isPortalDj ? () => t('profile.seo_og_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
+  description: isPortalDj ? () => t('profile.seo_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
+  ogDescription: isPortalDj ? () => t('profile.seo_og_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
   ogImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   twitterCard: 'summary_large_image',
   twitterTitle: isPortalDj ? 'Portal DJ - Comunidad DJ' : () => `${profileData.value?.name} (@${id}) | Hub.dj`,
-  twitterDescription: isPortalDj ? () => t('profile.seo_tw_desc') : () => profileDetails.value?.biography || t('profile.seo_desc'),
+  twitterDescription: isPortalDj ? () => t('profile.seo_tw_desc') : () => profileDetails.value?.hub_bio || profileDetails.value?.biography || t('profile.seo_desc'),
   twitterImage: isPortalDj ? 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png' : () => profileDetails.value?.images?.original || 'https://wp.portaldj.pro/wp-content/uploads/2023/04/Icono-1080p.png',
   ogUrl: `https://hub.dj/${id}`,
   ogType: 'website'
@@ -116,6 +135,9 @@ useHead({
           <img class="w-24 h-24 rounded-full object-cover mb-4 shadow-lg shadow-white/5 border border-white/10" :src="profileDetails?.images?.original" :alt="profileData?.name" onerror="this.onerror=null;this.src='https://placehold.co/96x96/1a202c/ffffff?text=DJ';">
           <h1 class="text-2xl font-bold tracking-tight text-white">@{{ id }}</h1>
           <p class="text-sm text-gray-400 mt-1 font-medium">{{ profileData.name }}</p>
+          <p v-if="profileDetails?.hub_bio || profileDetails?.biography" class="text-sm text-gray-300 mt-3 max-w-sm text-center leading-relaxed">
+            {{ profileDetails?.hub_bio || profileDetails?.biography }}
+          </p>
           <div v-if="profileDetails?.dj_type" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 mt-3">
             <span class="relative flex h-1.5 w-1.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pdj-cyan opacity-75"></span>
@@ -155,11 +177,35 @@ useHead({
       </div>
 
       <div v-else-if="profileData" class="mt-8 flex flex-col space-y-4">
-        <a v-for="link in hubLinks" :key="'hub-'+link.id" :href="link.url" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:border-pdj-cyan/50 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(28,156,175,0.2)] hover:scale-[1.02] active:scale-[0.98] w-full backdrop-blur-sm">
-          <div class="absolute inset-0 bg-gradient-to-r from-pdj-blue/10 to-pdj-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span class="relative z-10 tracking-wide text-center">{{ link.title }}</span>
-          <span v-if="link.description" class="relative z-10 text-xs font-normal text-slate-300 mt-1 text-center line-clamp-2">{{ link.description }}</span>
-        </a>
+        <template v-for="link in hubLinks" :key="'hub-'+link.id">
+          <div v-if="link.embed_type === 'youtube'" class="w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-white/10">
+            <iframe 
+              class="w-full h-full" 
+              :src="getYouTubeEmbedUrl(link.url)" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div v-else-if="link.embed_type === 'soundcloud'" class="w-full rounded-xl overflow-hidden shadow-lg border border-white/10">
+            <iframe 
+              width="100%" 
+              height="166" 
+              scrolling="no" 
+              frameborder="no" 
+              allow="autoplay" 
+              :src="getSoundCloudEmbedUrl(link.url)"
+            ></iframe>
+          </div>
+
+          <a v-else :href="link.url" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group flex flex-col items-center justify-center bg-white/5 border border-white/10 hover:border-pdj-cyan/50 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(28,156,175,0.2)] hover:scale-[1.02] active:scale-[0.98] w-full backdrop-blur-sm">
+            <div class="absolute inset-0 bg-gradient-to-r from-pdj-blue/10 to-pdj-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span class="relative z-10 tracking-wide text-center">{{ link.title }}</span>
+            <span v-if="link.description" class="relative z-10 text-xs font-normal text-slate-300 mt-1 text-center line-clamp-2">{{ link.description }}</span>
+          </a>
+        </template>
 
         <a v-for="link in socialNetworks" :key="link.id" :href="getSocialUrl(link.platform.name, link.url)" target="_blank" rel="noopener noreferrer" class="relative overflow-hidden group flex items-center justify-center bg-white/5 border border-white/10 hover:border-pdj-cyan/50 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(28,156,175,0.2)] hover:scale-[1.02] active:scale-[0.98] w-full backdrop-blur-sm">
           <div class="absolute inset-0 bg-gradient-to-r from-pdj-blue/10 to-pdj-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
