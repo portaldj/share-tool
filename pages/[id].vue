@@ -214,7 +214,7 @@ useHead({
         </a>
 
         <!-- View Full Profile Button -->
-        <a :href="`https://my.portaldj.pro/profile/${id}`" target="_blank" rel="noopener noreferrer" class="group relative px-6 py-4 mt-6 font-bold text-sm bg-white text-slate-950 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full flex items-center justify-center">
+        <a :href="`https://portaldj.pro/profile/${id}`" target="_blank" rel="noopener noreferrer" class="group relative px-6 py-4 mt-6 font-bold text-sm bg-white text-slate-950 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full flex items-center justify-center">
           <span class="relative z-10 flex items-center gap-2">
             {{ $t('profile.view_full_profile') }}
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
